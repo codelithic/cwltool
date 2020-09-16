@@ -1,0 +1,40 @@
+type: record
+name: WpsToolType
+label:
+fields:
+  - name: uri
+    type: string
+    label:
+    doc:
+    inputBinding:
+      position: 1
+      prefix: --wps
+  - name: identifier
+    type: string?
+    label:
+    doc: |
+      defines wps Identifier
+    inputBinding:
+      position: 2
+      prefix: --identifier
+  - name: wps_type
+    type:
+      type: enum
+      name: wps_type
+      symbols:
+        - wps_v1
+        - wps_v2
+        - ogc_api_draft
+    inputBinding:
+      prefix: --wpsType
+      position: 3
+  - name: call_type
+    type:
+      type: enum
+      name: call_type
+      symbols:
+        - sync
+        - async
+    inputBinding:
+      prefix: --callType
+      position: 4

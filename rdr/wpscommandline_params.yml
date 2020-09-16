@@ -1,0 +1,29 @@
+identifierType:
+  uri: https://terradue.ades.com/wps3/
+  identifier: sentinel1Raster_1_0
+  wps_type: ogc_api_draft
+  call_type: sync
+
+
+wpsParam2:
+  - idxRDR: "sent1Ref"
+    valRDR: http://cataogo.terradue.com/search?aui=dfs
+    formatRDR: application/xml
+
+
+params:
+  - idx: "sent1Ref"
+    val: http://cataogo.terradue.com/search?aui=dfs      
+    format: application/xml
+
+  - idx: "postProces"
+    val: "http://cataogo.terradue.com/search?aui=2332"
+    format: application/xml
+
+  - idx: "raster1"
+    val: "132"
+    format: ''
+
+  - idx: "raster1"
+    val: "156"
+    format: ''

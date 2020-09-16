@@ -1,0 +1,45 @@
+class: CommandLineWPS
+cwlVersion: v1.0
+doc: Terradue wpsClient
+
+requirements:
+  InlineJavascriptRequirement: {}
+  SchemaDefRequirement:
+    types:
+      - $import: wps_tool_type.yml
+      - $import: wps_tool_params_type.yml
+
+WPSRequirement:
+  uriRDR: https://terradue.ades.com/wps3/
+  identifierRDR: sentinel1Raster_1_0
+  wps_typeRDR: ogc_api_draft
+  call_typeRDR: sync
+
+arguments:
+  - prefix: --PARAMS
+    position: 3
+    valueFrom: |
+      ${
+        var r = [];
+        for (var i = 0; i < inputs.params.length ; i++) {
+          var F="";
+          if (typeof inputs.params[i].format !== 'object') {
+              F=inputs.params[i].format;
+          }
+          var obj = { "id": inputs.params[i].idx ,"val": inputs.params[i].val, "format": F };
+          r.push(obj);
+        }
+        return r;
+      }
+
+outputs: []
+inputs:
+  identifierType:
+    type: wps_tool_type.yml#WpsToolType
+    inputBinding:
+      position: 1
+  params:
+    type:
+      type: array
+      items: wps_tool_params_type.yml#WpsToolParamsType
+

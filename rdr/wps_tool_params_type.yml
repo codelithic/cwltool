@@ -1,0 +1,12 @@
+name: WpsToolParamsType
+type: record
+label:
+fields:
+  - name: idx
+    type: string
+
+  - name: val
+    type: string
+
+  - name: format
+    type: string?
